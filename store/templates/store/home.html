@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>All Products</h2>
+<div>
+  {% for product in products %}
+    <div>
+      <h3><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
+      <p>₹{{ product.price }}</p>
+      <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
