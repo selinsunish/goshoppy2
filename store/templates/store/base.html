@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Girlyyy!!!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    
+    <!-- Inline CSS -->
+    <style>
+    /* Product Grid */
+    body {
+        font-family: 'Quicksand', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffb6c1;
+        padding: 15px 30px;
+    }
+
+    .navbar .logo h2 {
+        margin: 0;
+        color: #fff;
+    }
+
+    .navbar nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        margin-left: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background: #eee;
+        margin-top: 30px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    /* Product Card */
+    .product-card {
+        background: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Fix Image Sizes */
+    .product-card img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto 10px auto;
+        border-radius: 8px;
+        background: #f8f8f8;
+    }
+
+    /* Product Name */
+    .product-card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    /* Product Price */
+    .product-card p {
+        font-size: 16px;
+        color: #444;
+        margin-bottom: 10px;
+    }
+
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.3s;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: #ff66b2;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #e05599;
+    }
+
+    .btn-secondary {
+        background: #eee;
+        color: #333;
+    }
+
+    .btn-secondary:hover {
+        background: #ddd;
+    }
+
+    /* ✅ Responsive fix */
+    @media (max-width: 768px) {
+        .product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .product-card img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"><h2>Go Girlyyy!!!</h2></div>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'login'%}">Login</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Go Girlyyy!!! All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f9c5d1, #fbc2eb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 340px;
+      text-align: center;
+    }
+    h2 {
+      color: #e75480;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #f3b0c3;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+    input:focus {
+      border-color: #e75480;
+      box-shadow: 0 0 5px #f3a1b9;
+    }
+    button {
+      background: #e75480;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #d04c74;
+    }
+    .link {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    .link a {
+      color: #e75480;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome Back 💖</h2>
+    <form method="post" action="">
+      <!-- {% csrf_token %} in Django -->
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div class="link">
+      <p>Don't have an account? <a href="/store/register/">Sign Up</a></p>
+    </div>
+  </div>
+</body>
+</html>

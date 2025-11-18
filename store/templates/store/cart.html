@@ -1,0 +1,42 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert" style="padding: 10px; background-color: #d4edda; color: #155724; margin-bottom: 15px;">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+<h2 style="color: #2c3e50;">Your Cart</h2>
+{% if cart_items%}
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <th style="border-bottom: 1px solid #ccc; text-align: left;">Product</th>
+      <th style="border-bottom: 1px solid #ccc;">Qty</th>
+      <th style="border-bottom: 1px solid #ccc;">Total</th>
+    </tr>
+  {% for item in cart_items %}
+    <tr>
+      <td style="padding: 8px;">{{ item.product.name }}</td>
+      <td style="text-align: center;">{{ item.qty }}</td>
+      <td style="text-align: right;">₹{{ item.total }}</td>
+      <td style="text-align: center;">
+        <form method="post" action="{% url 'remove_from_cart' item.product.id %}">
+          {% csrf_token %}
+          <button type="submit" style="padding: 5px 10px; background-color: #e74c3c; color: white; border: none; cursor: pointer;">Remove</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<p style="margin-top: 20px; font-weight: bold;">Grand Total: ₹{{ total }}</p>
+<a href="{% url 'checkout' %}" style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #27ae60; color: white; text-decoration: none;">Proceed to Checkout</a>
+{% else%}
+  <p style="margin-top: 20px; font-size: 18px; color: #e67e22;">Your cart is empty.</p>
+  <a href="{% url 'home' %}" style="display: inline-block; margin-top: 10px; padding: 10px 15px; background-color: #3498db; color: white; text-decoration: none;">Continue Shopping</a>
+{% endif %}
+{% endblock %}
+

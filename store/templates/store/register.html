@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body style="
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe6eb, #ffd6e0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+">
+
+  <!-- Main Container -->
+  <div style="
+      width: 800px;
+      height: 500px;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  ">
+
+    <!-- Left Section -->
+    <div style="
+        width: 50%;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+    ">
+        <a href="{% url 'login' %}" style="
+            display:block;
+            width:100%;
+            background-color:white;
+            color:#ff7b7b;
+            padding:12px;
+            border:none;
+            border-radius:25px;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            text-align:center;
+            text-decoration:none;
+            transition: all 0.3s ease;
+        " 
+        onmouseover="this.style.backgroundColor='#ffe6e6'" 
+        onmouseout="this.style.backgroundColor='white'">
+            Login
+        </a>
+    </div>
+
+    <!-- Right Section (Form) -->
+    <div style="
+        width: 100%;
+        padding: 50px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #fff;
+    ">
+        <!-- Title -->
+        <div style="text-align:center; margin-bottom:20px;">
+            <h2 style="color:#ff7b7b; font-weight:700;">CREATE ACCOUNT</h2>
+        </div>
+
+        <!-- Django Form -->
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Username</label>
+                <input type="text" name="username" placeholder="Enter your username" required
+                    style="width:100%; padding:12px; border:none; border-bottom:2px solid #ddd; font-size:15px; outline:none;">
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required
+                    style="width:100%; padding:12px; border:none; border-bottom:2px solid #ddd; font-size:15px; outline:none;">
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Password</label>
+                <input type="password" name="password1" placeholder="Enter your password" required
+                    style="width:100%; padding:12px; border:none; border-bottom:2px solid #ddd; font-size:15px; outline:none;">
+            </div>
+
+            <div style="margin-bottom:25px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Confirm Password</label>
+                <input type="password" name="password2" placeholder="Confirm your password" required
+                    style="width:100%; padding:12px; border:none; border-bottom:2px solid #ddd; font-size:15px; outline:none;">
+            </div>
+
+            <button type="submit" style="
+                width:100%;
+                background-color:#ff7b7b;
+                color:white;
+                padding:12px;
+                border:none;
+                border-radius:25px;
+                font-size:16px;
+                font-weight:600;
+                cursor:pointer;
+                transition: all 0.3s ease;
+            " 
+            onmouseover="this.style.backgroundColor='#ff9a9e'" 
+            onmouseout="this.style.backgroundColor='#ff7b7b'">
+                REGISTER
+            </button>
+        </form>
+    </div>
+  </div>
+
+</body>
+</html>

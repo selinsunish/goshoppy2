@@ -1,14 +1,78 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-<h2>All Products</h2>
-<div>
-  {% for product in products %}
-    <div>
-      <h3><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
-      <p>₹{{ product.price }}</p>
-      <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
-    </div>
-  {% endfor %}
+<div class="search-bar">
+    <form method="get" action="{% url 'home' %}">
+        <input type="text" name="q" placeholder="Search products...." value="{{query|default:''}}">
+        <button type="submit">Search</button>
+    </form>
 </div>
+<style>
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.search-bar form {
+  display: flex;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px 15px;
+  width: 220px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-bar button {
+  border: none;
+  background: pink;
+  color: white;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.search-bar button:hover {
+  background: #45a049;
+}
+</style>
+<section class="hero">
+    <div class="hero-text">
+        <h1>Beauty that Begins with You</h1>
+        <p>Discover premium products to glow your way through the day.</p>
+        <a href="#bestsellers" class="btn-primary">Shop the Collection</a>
+    </div>
+</section>
+
+<section id="bestsellers" class="products">
+    <h2>Our Bestsellers</h2>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>₹{{ product.price }}</p>
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <button class="btn-secondary" type="submit">Add to Cart</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="promo">
+    <h2>Spring Beauty Sale<br><span>Up to 40% OFF</span></h2>
+    <p>Soft hues. Fresh skin. Perfect for spring mornings.</p>
+    <a href="#" class="btn-primary">Shop Now</a>
+</section>
 {% endblock %}

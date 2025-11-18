@@ -1,6 +1,10 @@
-<h2>Checkout</h2>
-<form method="post">
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2 style="color:#2c3e50;">Checkout</h2>
+<form method="post" style="max-width: 400px;">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Place Order</button>
+  <button type="submit" style="padding: 10px 15px; background: #e67e22; color: white; border: none;">Place Order</button>
 </form>
+{% endblock %}
